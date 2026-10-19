@@ -81,14 +81,14 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
   const currentNav = NAV_ITEMS.find(n => n.id === currentPage);
   let prevSection = '';
 
-  const isDark = settings.theme === 'premium-neon' || settings.theme === 'dark';
+  const isDark = settings.theme === 'premium-neon' || settings.theme === 'dark' || !settings.theme;
   const toggleTheme = () => {
-    const next = isDark ? 'light' : 'premium-neon';
+    const next = isDark ? 'light' : 'dark';
     dispatch({ type: 'UPDATE_SETTINGS', payload: { theme: next } });
   };
 
   return (
-    <div className="app-shell" data-theme={settings.theme || 'premium-neon'}>
+    <div className="app-shell" data-theme={settings.theme || 'dark'}>
       {/* Sidebar overlay */}
       <div
         className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`}

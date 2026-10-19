@@ -23,13 +23,13 @@ const DEFAULT_COLORS = [
 ];
 
 const tooltipStyle = {
-  backgroundColor: '#0A0A0A',
-  border: '1px solid #303030',
-  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.7)',
+  backgroundColor: 'var(--bg-secondary)',
+  border: '1px solid var(--border-primary)',
+  boxShadow: 'var(--shadow-md)',
   borderRadius: 8,
   fontSize: 12,
   fontWeight: 500,
-  color: '#EDEDED',
+  color: 'var(--text-primary)',
 };
 
 export default function ChartWrapper({
@@ -44,17 +44,17 @@ export default function ChartWrapper({
     );
   }
 
-  const axisStyle = { fill: '#71717A', fontSize: 11, fontWeight: 500 };
+  const axisStyle = { fill: 'var(--text-muted)', fontSize: 11, fontWeight: 500 };
 
   if (type === 'area') {
     return (
       <ResponsiveContainer width="100%" height={height}>
         <AreaChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} tickFormatter={(v) => `₹${v >= 1000 ? (v/1000).toFixed(0)+'k' : v}`} />
           <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`₹${Number(v ?? 0).toLocaleString('en-IN')}`, dataKey ?? 'Revenue']} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: 'var(--text-secondary)' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
             <Area key={k} type="monotone" dataKey={k} stroke={colors[i % colors.length]} fill={`${colors[i % colors.length]}20`} strokeWidth={2} dot={false} name={labels[i] ?? k} />
           ))}
@@ -67,11 +67,11 @@ export default function ChartWrapper({
     return (
       <ResponsiveContainer width="100%" height={height}>
         <BarChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }} barSize={18}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} />
           <Tooltip contentStyle={tooltipStyle} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: 'var(--text-secondary)' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
             <Bar key={k} dataKey={k} fill={colors[i % colors.length]} radius={[4, 4, 0, 0]} name={labels[i] ?? k} />
           ))}
@@ -84,11 +84,11 @@ export default function ChartWrapper({
     return (
       <ResponsiveContainer width="100%" height={height}>
         <LineChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} />
           <Tooltip contentStyle={tooltipStyle} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: 'var(--text-secondary)' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
             <Line key={k} type="monotone" dataKey={k} stroke={colors[i % colors.length]} strokeWidth={2} dot={{ fill: colors[i % colors.length], r: 3 }} name={labels[i] ?? k} />
           ))}
@@ -115,7 +115,7 @@ export default function ChartWrapper({
             ))}
           </Pie>
           <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`₹${Number(v ?? 0).toLocaleString('en-IN')}`, '']} />
-          {showLegend && <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
+          {showLegend && <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, color: 'var(--text-secondary)' }} />}
         </PieChart>
       </ResponsiveContainer>
     );

@@ -117,7 +117,7 @@ export default function SettingsPage() {
                   <button
                     type="button"
                     className={`btn btn-sm ${form.theme === 'premium-neon' || form.theme === 'dark' ? 'btn-primary' : 'btn-secondary'}`}
-                    onClick={() => set('theme', 'premium-neon')}
+                    onClick={() => set('theme', 'dark')}
                   >
                     ⚡ Minimalist Dark SaaS (Electric Blue & Jet Black)
                   </button>

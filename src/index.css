@@ -118,6 +118,95 @@
   --topbar-height: 60px;
 }
 
+/* ============================================================
+   GameZone OS — Light Mode Theme Specification
+   Triggered by [data-theme="light"]
+   ============================================================ */
+
+[data-theme="light"],
+:root[data-theme="light"],
+.app-shell[data-theme="light"] {
+  /* Core Token Specification - Clean Minimal SaaS Light Mode */
+  --bg-primary: #F8FAFC;        /* Subtle slate-white canvas */
+  --bg-secondary: #FFFFFF;      /* Crisp pure white for cards, sidebar, topbar */
+  --bg-elevated: #F1F5F9;       /* Light neutral surface for table headers, secondary buttons */
+  --bg-input: #FFFFFF;          /* Pure white inputs */
+  --border-primary: #E2E8F0;    /* Crisp light border */
+  --accent-primary: #1683FF;    /* Signature electric blue */
+  --accent-hover: #0E70E0;      /* Slightly darker blue for hover */
+  --accent-subtle: #EFF6FF;     /* Very soft blue tint */
+  --text-primary: #0F172A;      /* Deep high-contrast slate navy text */
+  --text-secondary: #475569;    /* Medium slate for secondary labels */
+  --text-muted: #64748B;        /* Muted slate for metadata */
+  --status-success: #0D9488;    /* Rich emerald/teal */
+  --status-warning: #D97706;    /* Amber */
+  --status-error: #E11D48;      /* Crimson / rose */
+
+  /* Aliases & Semantic Compatibility */
+  --bg-base: var(--bg-primary);
+  --bg-surface: var(--bg-secondary);
+  --bg-surface-2: #F8FAFC;
+  --bg-surface-3: #EDF2F7;
+  --bg-overlay: rgba(15, 23, 42, 0.45);
+
+  --border-subtle: #F1F5F9;
+  --border-default: var(--border-primary);
+  --border-strong: #CBD5E1;
+  --border-focus: var(--accent-primary);
+
+  --text-tertiary: var(--text-muted);
+  --text-inverse: #FFFFFF;
+
+  /* Primary Accent: Electric Blue */
+  --accent-blue: var(--accent-primary);
+  --accent-lime: var(--accent-primary);
+  --accent-lime-hover: var(--accent-hover);
+  --accent-lime-dim: var(--accent-subtle);
+  --accent-lime-subtle: #EFF6FF;
+  --accent-lime-glow: 0 0 16px rgba(22, 131, 255, 0.15);
+
+  --accent-violet: var(--accent-primary);
+  --accent-violet-hover: var(--accent-hover);
+  --accent-violet-dim: var(--accent-subtle);
+  --accent-violet-subtle: #EFF6FF;
+
+  /* Status Colors & Badges */
+  --status-available: #0D9488;
+  --status-available-dim: #CCFBF1;
+  --status-occupied: #D97706;
+  --status-occupied-dim: #FEF3C7;
+  --status-reserved: #1683FF;
+  --status-reserved-dim: #EFF6FF;
+  --status-danger: #E11D48;
+  --status-danger-dim: #FFE4E6;
+  --status-info: #1683FF;
+  --status-info-dim: #EFF6FF;
+
+  /* Restrained SaaS Shadows for Light Mode */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .badge.silver {
+  color: #475569;
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+}
+
+[data-theme="light"] .badge.gold {
+  color: #B45309;
+  background: #FEF3C7;
+  border-color: #FDE68A;
+}
+
+[data-theme="light"] .badge.bronze {
+  color: #9A3412;
+  background: #FFEDD5;
+  border-color: #FED7AA;
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -419,7 +508,7 @@ code, pre {
 }
 .mobile-menu-btn:hover {
   color: var(--text-primary);
-  border-color: #404040;
+  border-color: var(--border-strong);
 }
 
 .page-breadcrumb {
@@ -504,8 +593,8 @@ code, pre {
 }
 .topbar-btn:hover {
   color: var(--text-primary);
-  border-color: #404040;
-  background: #242424;
+  border-color: var(--border-strong);
+  background: var(--bg-surface-2);
 }
 
 .notif-dot {
@@ -533,8 +622,8 @@ code, pre {
   transition: all var(--transition-fast);
 }
 .profile-btn:hover {
-  background: #242424;
-  border-color: #404040;
+  background: var(--bg-surface-2);
+  border-color: var(--border-strong);
 }
 
 .avatar-sm {
@@ -639,9 +728,9 @@ code, pre {
   border: 1px solid var(--border-primary);
 }
 .btn-secondary:hover:not(:disabled) {
-  background: #242424;
-  border-color: #404040;
-  color: #FFFFFF;
+  background: var(--bg-surface-2);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
 }
 
 /* Danger Button: Restrained Red Styling */
@@ -725,7 +814,7 @@ code, pre {
 }
 
 .card:hover {
-  border-color: #404040;
+  border-color: var(--border-strong);
 }
 
 .card-header {
@@ -786,8 +875,8 @@ code, pre {
 }
 
 .kpi-card:hover {
-  border-color: #404040;
-  background: #0E0E0E;
+  border-color: var(--border-strong);
+  background: var(--bg-surface-2);
   transform: translateY(-1px);
 }
 
@@ -874,8 +963,8 @@ code, pre {
 }
 
 .station-card:hover {
-  border-color: #404040;
-  background: #0E0E0E;
+  border-color: var(--border-strong);
+  background: var(--bg-surface-2);
   transform: translateY(-1px);
 }
 
@@ -955,7 +1044,7 @@ code, pre {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #141414;
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-primary);
   padding: 6px 10px;
   border-radius: var(--radius-sm);
@@ -1144,9 +1233,9 @@ code, pre {
 }
 
 .filter-btn:hover {
-  background: #242424;
+  background: var(--bg-surface-2);
   color: var(--text-primary);
-  border-color: #404040;
+  border-color: var(--border-strong);
 }
 
 .filter-btn.active {
@@ -1198,7 +1287,7 @@ code, pre {
 }
 
 .data-table th {
-  background: #0A0A0A;
+  background: var(--bg-surface-2);
   color: var(--text-secondary);
   padding: 12px 16px;
   font-family: var(--font-sans);
