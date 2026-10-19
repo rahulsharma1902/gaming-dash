@@ -53,7 +53,7 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
 
   // Sync theme attribute to document root
   useEffect(() => {
-    const t = settings.theme || 'neo-light';
+    const t = settings.theme || 'dark';
     document.documentElement.setAttribute('data-theme', t);
   }, [settings.theme]);
 
@@ -147,15 +147,20 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
               <Menu size={18} />
             </button>
 
-            {/* Breadcrumb */}
-            <nav className="page-breadcrumb" aria-label="Breadcrumb">
+            {/* Desktop Breadcrumb */}
+            <nav className="page-breadcrumb hide-mobile" aria-label="Breadcrumb">
               <span>GameZone OS</span>
               <span className="breadcrumb-sep">›</span>
               <span className="crumb-current">{currentNav?.label ?? 'Overview'}</span>
             </nav>
 
+            {/* Mobile Page Title */}
+            <div className="mobile-page-title show-mobile">
+              <span>{currentNav?.label ?? 'Overview'}</span>
+            </div>
+
             {/* Global search */}
-            <div className="search-bar" role="search">
+            <div className="search-bar hide-mobile" role="search">
               <Search size={14} style={{ color: 'var(--text-tertiary)', flexShrink: 0 }} />
               <input
                 type="search"
@@ -168,28 +173,25 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
           </div>
 
           <div className="topbar-actions">
+            {/* Theme Toggle - unified as topbar-btn */}
             <button
-              className="btn btn-secondary btn-sm"
+              className="topbar-btn"
               onClick={toggleTheme}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                background: isDark ? 'var(--neo-yellow)' : '#FFFFFF',
-                color: '#000000',
-              }}
-              title={`Switch to ${isDark ? 'Neo-Brutalism Light' : 'Neo-Brutalism Dark'}`}
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+              aria-label="Toggle theme"
             >
-              {isDark ? <Sun size={14} /> : <Moon size={14} />}
-              <span className="hide-mobile">{isDark ? 'Neo Light' : 'Neo Dark'}</span>
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
             </button>
 
+            {/* Public Website Preview Button (Desktop/Tablet) */}
             <button
-              className="btn btn-secondary btn-sm"
+              className="btn btn-secondary btn-sm hide-mobile"
               onClick={() => onNavigate('website')}
               style={{ display: 'flex', alignItems: 'center', gap: 6 }}
               title="Preview Customer Website"
             >
               <Globe size={13} />
-              <span className="hide-mobile">Public Website</span>
+              <span>Public Website</span>
             </button>
 
             {/* Notifications */}
@@ -204,7 +206,7 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
                 {maintenanceCount > 0 && <span className="notif-dot" />}
               </button>
               {showNotifs && (
-                <div className="dropdown" style={{ right: 0, minWidth: 320 }}>
+                <div className="dropdown notif-dropdown" style={{ right: 0 }}>
                   <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)', fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
                     Alerts & Activity
                   </div>
@@ -230,16 +232,22 @@ export function Layout({ currentPage, onNavigate, children, globalSearch, setGlo
                 aria-expanded={showProfile}
               >
                 <div className="avatar-sm">{settings.monogram[0]}</div>
-                <span style={{ maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <span className="profile-name hide-mobile" style={{ maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {settings.name.split(' ')[0]}
                 </span>
-                <ChevronDown size={12} style={{ color: 'var(--text-tertiary)' }} />
+                <ChevronDown size={12} className="hide-mobile" style={{ color: 'var(--text-tertiary)' }} />
               </button>
               {showProfile && (
-                <div className="dropdown" style={{ right: 0, minWidth: 220 }}>
+                <div className="dropdown profile-dropdown" style={{ right: 0 }}>
                   <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)' }}>
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>{settings.name}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 2 }}>Owner · Demo Account</div>
+                  </div>
+                  <div className="dropdown-item show-mobile" onClick={() => { onNavigate('website'); setShowProfile(false); }}>
+                    <Globe size={14} />
+                    <div>
+                      <div className="dropdown-item-title">Public Website Preview</div>
+                    </div>
                   </div>
                   <div className="dropdown-item" onClick={() => { onNavigate('settings'); setShowProfile(false); }}>
                     <Settings size={14} />

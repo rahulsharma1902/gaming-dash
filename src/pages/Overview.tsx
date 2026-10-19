@@ -250,7 +250,7 @@ export default function OverviewPage() {
           <ChartWrapper
             type="bar" data={utilizationData} xKey="name" height={180}
             keys={['occupied', 'available']} labels={['In Use', 'Available']}
-            colors={['#7c5cfc', '#1a1e28']} showLegend
+            colors={['#1683FF', '#303030']} showLegend
           />
         </div>
       </div>

@@ -527,13 +527,13 @@ function StationDetailModal({ station, session, symbol, products, onClose, onSta
                 <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-tertiary)' }}>PLAY CHARGE</div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>{formatCurrency(timeCharge, symbol)}</div>
               </div>
-              <div style={{ padding: '8px 12px', background: 'rgba(56, 189, 248, 0.08)', border: '1px solid rgba(56, 189, 248, 0.25)', borderRadius: 'var(--radius-sm)' }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: '#38BDF8' }}>ADD-ONS TOTAL</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 15, color: '#38BDF8' }}>{formatCurrency(addonsTotal, symbol)}</div>
+              <div style={{ padding: '8px 12px', background: 'var(--bg-elevated)', border: '1px solid var(--border-primary)', borderRadius: 'var(--radius-sm)' }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-secondary)' }}>ADD-ONS TOTAL</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>{formatCurrency(addonsTotal, symbol)}</div>
               </div>
-              <div style={{ padding: '8px 12px', background: 'rgba(198, 255, 0, 0.08)', border: '1px solid rgba(198, 255, 0, 0.25)', borderRadius: 'var(--radius-sm)' }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--primary)' }}>TOTAL BILL DUE</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 16, color: 'var(--primary)' }}>{formatCurrency(total, symbol)}</div>
+              <div style={{ padding: '8px 12px', background: 'var(--accent-subtle)', border: '1px solid rgba(22, 131, 255, 0.35)', borderRadius: 'var(--radius-sm)' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-primary)' }}>TOTAL BILL DUE</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 16, color: 'var(--accent-primary)' }}>{formatCurrency(total, symbol)}</div>
               </div>
             </div>
 
@@ -692,7 +692,7 @@ function SessionAddonModal({ station, session, symbol, products, onClose }: {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)' }}>Total Add-ons:</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 17, background: 'rgba(198, 255, 0, 0.12)', color: 'var(--primary)', padding: '2px 10px', border: '1px solid var(--primary)', borderRadius: 'var(--radius-sm)' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: 17, background: 'var(--accent-subtle)', color: 'var(--accent-primary)', padding: '2px 10px', border: '1px solid rgba(22, 131, 255, 0.35)', borderRadius: 'var(--radius-sm)' }}>
               {formatCurrency(addonsTotal, symbol)}
             </span>
           </div>

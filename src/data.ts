@@ -4,8 +4,8 @@
 
 import type { AppState, Station, Session, Booking, Customer, PricingRule, Package, FnBProduct, Expense, Transaction, BusinessSettings } from './types';
 
-export const STORAGE_KEY = 'gamezone_os_v3';
-export const STORAGE_VERSION = 3;
+export const STORAGE_KEY = 'gamezone_os_v4';
+export const STORAGE_VERSION = 4;
 
 // ---- Deterministic ID generation ----
 let _idCounter = 1000;
@@ -56,7 +56,7 @@ const defaultSettings: BusinessSettings = {
   bookingLeadHours: 1,
   maxBookingDays: 30,
   timezone: 'Asia/Kolkata',
-  theme: 'premium-neon',
+  theme: 'dark',
   monogram: 'PA',
 };
 

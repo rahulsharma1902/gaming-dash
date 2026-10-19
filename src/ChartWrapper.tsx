@@ -19,17 +19,17 @@ interface ChartWrapperProps {
 }
 
 const DEFAULT_COLORS = [
-  '#C6FF00', '#38BDF8', '#22C55E', '#F59E0B', '#FB7185', '#A78BFA',
+  '#1683FF', '#2DD4BF', '#FBBF24', '#A1A1AA', '#F87171', '#3898FF',
 ];
 
 const tooltipStyle = {
-  backgroundColor: '#1B1F27',
-  border: '1px solid rgba(255, 255, 255, 0.15)',
-  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
-  borderRadius: 6,
+  backgroundColor: '#0A0A0A',
+  border: '1px solid #303030',
+  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.7)',
+  borderRadius: 8,
   fontSize: 12,
-  fontWeight: 600,
-  color: '#F4F6F8',
+  fontWeight: 500,
+  color: '#EDEDED',
 };
 
 export default function ChartWrapper({
@@ -38,25 +38,25 @@ export default function ChartWrapper({
 }: ChartWrapperProps) {
   if (!data || data.length === 0) {
     return (
-      <div style={{ height, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-tertiary)', fontSize: 13, fontWeight: 500 }}>
+      <div style={{ height, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: 13, fontWeight: 500 }}>
         No data available
       </div>
     );
   }
 
-  const axisStyle = { fill: '#64748B', fontSize: 11, fontWeight: 500 };
+  const axisStyle = { fill: '#71717A', fontSize: 11, fontWeight: 500 };
 
   if (type === 'area') {
     return (
       <ResponsiveContainer width="100%" height={height}>
         <AreaChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} tickFormatter={(v) => `₹${v >= 1000 ? (v/1000).toFixed(0)+'k' : v}`} />
           <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`₹${Number(v ?? 0).toLocaleString('en-IN')}`, dataKey ?? 'Revenue']} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#94A3B8' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
-            <Area key={k} type="monotone" dataKey={k} stroke={colors[i % colors.length]} fill={`${colors[i % colors.length]}18`} strokeWidth={2} dot={false} name={labels[i] ?? k} />
+            <Area key={k} type="monotone" dataKey={k} stroke={colors[i % colors.length]} fill={`${colors[i % colors.length]}20`} strokeWidth={2} dot={false} name={labels[i] ?? k} />
           ))}
         </AreaChart>
       </ResponsiveContainer>
@@ -67,11 +67,11 @@ export default function ChartWrapper({
     return (
       <ResponsiveContainer width="100%" height={height}>
         <BarChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }} barSize={18}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} />
           <Tooltip contentStyle={tooltipStyle} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#94A3B8' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
             <Bar key={k} dataKey={k} fill={colors[i % colors.length]} radius={[4, 4, 0, 0]} name={labels[i] ?? k} />
           ))}
@@ -84,11 +84,11 @@ export default function ChartWrapper({
     return (
       <ResponsiveContainer width="100%" height={height}>
         <LineChart data={data} margin={{ top: 4, right: 12, left: 0, bottom: 0 }}>
-          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />}
+          {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#242424" vertical={false} />}
           <XAxis dataKey={xKey} tick={axisStyle} axisLine={false} tickLine={false} />
           <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={45} />
           <Tooltip contentStyle={tooltipStyle} />
-          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#94A3B8' }} />}
+          {showLegend && <Legend wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
           {(keys.length > 0 ? keys : [dataKey ?? 'value']).map((k, i) => (
             <Line key={k} type="monotone" dataKey={k} stroke={colors[i % colors.length]} strokeWidth={2} dot={{ fill: colors[i % colors.length], r: 3 }} name={labels[i] ?? k} />
           ))}
@@ -115,7 +115,7 @@ export default function ChartWrapper({
             ))}
           </Pie>
           <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`₹${Number(v ?? 0).toLocaleString('en-IN')}`, '']} />
-          {showLegend && <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, color: '#8892aa' }} />}
+          {showLegend && <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, color: '#A1A1AA' }} />}
         </PieChart>
       </ResponsiveContainer>
     );

@@ -119,7 +119,7 @@ export default function SettingsPage() {
                     className={`btn btn-sm ${form.theme === 'premium-neon' || form.theme === 'dark' ? 'btn-primary' : 'btn-secondary'}`}
                     onClick={() => set('theme', 'premium-neon')}
                   >
-                    ⚡ Premium Neon Gaming (Dark Graphite & Electric Lime)
+                    ⚡ Minimalist Dark SaaS (Electric Blue & Jet Black)
                   </button>
                   <button
                     type="button"
@@ -131,7 +131,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <div style={{ borderTop: '2px solid #000', paddingTop: 'var(--space-4)' }}>
+              <div style={{ borderTop: '1px solid var(--border-primary)', paddingTop: 'var(--space-4)' }}>
                 <div className="form-group">
                   <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
                     <input type="checkbox" checked={form.taxEnabled} onChange={e => set('taxEnabled', e.target.checked)} />
